@@ -1,0 +1,257 @@
+{% extends 'ecommerce_app/base.html' %}
+
+
+{% load static %}
+
+{% block content %}
+
+
+    <div class="section section-tabs">
+        <hr>
+      <div class="container">
+        <!--                nav tabs	             -->
+        <div id="nav-tabs">
+            <div class="col-md-12 ">
+          <div class="row">
+         
+      
+              <!-- Tabs with icons on Card -->
+              <div class="card  card-plain card-nav-tabs"  style="background-color:#fff">
+                <div class="card-header card-header-primary">
+                  <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                  <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper ">
+                      <ul class="nav nav-tabs  nav-justified" data-tabs="tabs">
+                        <li class="nav-item">
+                          <a class="nav-link active " href="#description" data-toggle="tab">
+                              {{ product.name }}  Overview 
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#modules" data-toggle="tab">
+                           MODULES
+                            </a>
+                          </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#requirements" data-toggle="tab">
+                          REQUIREMENTS 
+                          </a>
+                        </li>
+               
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" href="#apply" data-toggle="tab">
+                           APPLY
+                            </a>
+                          </li>
+                        
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body col-md-12 text-center ">
+                  <div class="tab-content ">
+                    <div class="tab-pane active" id="description">
+                        <div class="container">
+        
+                            <div class="row">
+                                <div class="col-md-4 p-5 mb-5  text-center bg-white rounded shadow-sm " >              
+                                    <img style="border-radius: 6px;  " src="{{ product.image.url }}"
+                                    class=" img-responsive" height="100%" width="100%"  alt="">                     
+                                
+                                       
+                                      </div>
+                                      <div class="col-md-8 p-5 mb-5  bg-white rounded shadow-sm " >
+                                         Delivery <b>{{ product.Delivery }}</b>
+                                        <p>{{product.description}}</p>
+                                        </div>
+                                                
+                      
+                            </div>
+                          </div>
+                      <br>
+                      <h2>
+                          <b>  Course Outline  </b> 
+                 
+                               </h2>
+                               <br>
+                               <div class="container">
+        
+                                  <div class="row">
+                                  
+                                            <div class="col-md-9   text-center bg-white rounded shadow-sm " >
+  
+                                                <embed src="{{ product.Course_module_file.url }}" frameborder="0" width="100%" height="350px" >
+                                              </div>
+                                                      
+                                              <div class="col-md-3 p-2  text-center bg-white rounded shadow-sm " >              
+                                                               
+                              <a href="{{product.Course_module_file.url }}"  target=_blank  class="btn btn-outline-primary  " style="box-shadow: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);" >
+                                  <i class="material-icons text-info">cloud_download
+                                    </i>  Download this brochure 
+                                  </a>  
+                            
+                                 
+                                </div>
+                                  </div>
+                                </div>
+                                <br>
+                              
+                                   
+
+                                  
+                                          <div class="container">
+                                            <!--                nav tabs	             -->
+                                            <h2>
+                                                <b>  Validation  </b> 
+                                       
+                                                     </h2>
+                                              <div class="row">
+                                              
+                                                        <div class="col-md-9 ml-auto mr-auto text-center   bg-white rounded shadow-sm " >
+                                                          
+                                                            
+                                                            <h4 class="card-description"> This course is Validated by  <b>{{product.Validator_name}}</b> </h4>
+                                                           
+                                                               
+                                                        
+                                                            
+                                                                <div class="col-md-6 col-lg-3 ml-auto mr-auto">
+         
+                                                                    <div class="copyright">
+                                                                        <a href="#pablito">
+                                                                        
+                                                                            <img class="img"  style="width:100% ;"src="{{ product.Validator_image.url }}" >
+                                                                          </a>
+                                                                          </div>
+                                                                          <h4 class="title  "> <i class="material-icons text-info">check
+                                                                            </i> </h4> 
+                                                            </div>
+                                                          </div>
+                                                                  
+                                                             
+                                                            
+                                        
+                                          
+                                              </div>
+                                            </div>
+                                          </div>
+           
+                    <div class="tab-pane" id="requirements">
+                      <p>{{ product.requirements }} </p>
+                    </div>
+                  
+                       
+                    <div class="tab-pane " id="modules" >
+  
+                            <div class="container">
+        
+                                <div class="row">
+                                
+                                          <div class="col-md-9  text-center bg-white rounded shadow-sm " >
+
+                                              <embed src="{{ product.Course_module_file.url }}" frameborder="0" width="100%" height="350px" >
+                                            </div>
+                                                    
+                                            <div class="col-md-3 pb-5 mb-5  text-center bg-white rounded shadow-sm " >              
+                                                             
+                            <a href="{{product.Course_module_file.url }}"  target=_blank  class="btn btn-outline-primary  " style="box-shadow: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);" >
+                                <i class="material-icons text-info">security
+                                  </i>  Download this brochure 
+                                </a>  
+                          
+                               
+                              </div>
+                                </div>
+                              </div>
+                            </div>
+                      
+                          
+                      
+                              
+                                      <!-- <button class="btn btn-outline-primary  " style="box-shadow: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);" >
+                                          Download Brochure
+                                        </button>             -->
+                                             
+                                   
+                      
+                
+          
+
+                   
+                                      
+                                   
+                 
+              
+                
+
+                    <div class="tab-pane" id="apply">
+                        
+                     
+                        <form action="{% url 'ecommerce_app:product_detail'  product.id product.slug %}" method="post">
+                            {% csrf_token %}
+                            {{ form }}
+                            <input type="submit" value="START YOUR JOURNEY OF BECOMING A LEADER" class="btn btn-outline-primary " style="box-shadow: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);" ></a>
+                        </form>
+                
+                      </div>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- End Tabs with icons on Card -->
+            </div>
+            <!-- <div class="col-md-3">
+
+           <div class="card" style=" box-shadow: 0 8px 16px 0 #c5c5c5;  border-radius: 6px;" >
+              {% if product.image != None and product.image != '' %} 
+            <img style="border-radius: 6px;  box-shadow: 0 8px 16px 0 #c5c5c5;" src="{{ product.image.url }}"
+              class=" img-responsive" height="100%" width="100%"  alt="">
+              {% else %}
+              <img src="static/img/dummy.png"  alt="">
+          {% endif %}
+              
+              <div class="card-body text-center">
+                      <br>
+<a href="{% url 'ecommerce_app:product_detail' product.pk product.slug %}">{{ product.name }}</a>
+              
+                <p class="card-text">   {{ product.description }}</p>
+                <a href="#" class="btn btn-default" style="box-shadow: 0 8px 16px 0 #c5c5c5;">enroll</a>
+              </div>
+            </div> 
+
+            <form action="{% url 'ecommerce_app:product_detail'  product.id product.slug %}" method="post">
+              {% csrf_token %}
+              {{ form }}
+              <input type="submit" value="Checkout" class="btn btn-default " >
+          </form>
+  
+  
+              </div> -->
+            </div>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 	            end nav tabs -->
+
+
+     
+        </div>
+
+
+      
+  
+  
+   
+                        <!-- small modal -->
+                   
+                        <!--    end small modal -->
+
+      {% include "landpage/main/js.html" %}  
+      <div id="ajax_response_login"></div>
+      <div id="ajax_response_register"></div>
+      <div id="ajax_logout"></div>
+      <div id="fb-root"></div>
+{% endblock %}

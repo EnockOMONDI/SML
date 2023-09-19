@@ -1,0 +1,226 @@
+{% extends 'registrar/base.html' %}
+
+{% load staticfiles%}
+{% block content %}
+
+<main>
+<div class="container-fluid">
+
+
+    <!-- Section: Modals -->
+
+    <!-- Section: Profile -->
+ 
+    <section>
+
+      <!-- Grid row -->
+      <div class="row mt-5">
+
+    
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-lg-8 col-md-8 text-center">
+
+  <!-- Tabs with icons on Card -->
+  <div class="card  card-plain card-nav-tabs"  style="background-color:#fff">
+    <div class="card-header card-header-primary">
+      <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+      <div class="nav-tabs-navigation">
+        <div class="nav-tabs-wrapper">
+          <ul class="nav nav-tabs" data-tabs="tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="/update_profile" data-toggle="tab">
+              {{ user.first_name }} {{ user.last_name }}  Personal info on LADA
+              </a>
+            </li>
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card-body ">
+      <!-- <div class="tab-content text-center">
+        <div class="tab-pane active" id="courses"> -->
+    <!-- Heading -->
+
+    
+
+      <div class="e-profile">
+          <div class="row">
+            <div class="col-12 col-sm-auto mb-4">
+              
+              <div class="mx-auto" style="width: 180px;">
+                <div class=""  style="height: 180px">
+                    {% if user.student.profile_pic %}
+                    <a href="#pablo">
+                        <img class="img" src="{{user.student.profile_pic.url}}"  style="height: 140px">
+  
+                      </a>
+                      {% else %}
+                  <a href="#pablo">
+                      <img class="img"  src="{% static 'img/studentavatar.png' %}"  style="height: 140px">
+
+                    </a>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+                <div class="text-center col-sm-auto mb-4 ">
+
+                    <!-- <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">dj sean</h4> -->
+                    <h3 class="card-title">   <span class="card-title"> Name:</span>  {{ user.first_name }} {{ user.last_name }} </h3>
+                    <p class="card-description">  <span class="card-title"> UserName:</span> @{{ user.first_name }}{{ user.last_name }} </p>
+                    <p class="card-description">  <span class="card-title"> Location:</span><i class="material-icons">location_on </i>{{user.student.country}}</p>
+
+
+
+                    <div class="text-center col-sm-auto mb-4 ">
+                        <span class="badge badge-secondary">student</span> <small>Joined {{user.date_joined }}</small>
+                        <!-- <div class="text-muted"><small>Joined {{user.date_joined }}</small></div> -->
+                      </div>
+                    <!-- <div class="text-muted"><small>Last seen 2 hours ago</small></div> -->
+    
+
+                
+               
+                 
+                    
+            </div>
+
+              <div class="text-center col-sm-auto mb-4 " >
+            <a class="btn btn-outline-primary" href="/update_profile"  ><i class="material-icons"></i>Edit profile                  </a>
+          </div>
+    
+          </div>
+     
+    
+        <!-- </div>
+        </div> -->
+    
+    
+            </div>
+            </div>
+            <div class="card-body ">
+                        
+                <h5 class="card-description">
+                <span class="card-title"> Bio:</span> 
+
+                
+               </h5>
+
+   <h5 class="card-description text-center "> {{user.student.bio}}</h5>
+              
+            </div>
+
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+          <br>
+          <br>        
+          <div class="card card-profile card-plain" >
+              <div class="card-body text-center">
+  
+                  <div class="modal-footer justify-content-center">
+                    <a href="/courses"  class="btn btn-outline-primary" ><i class="material-icons"></i>Browse courses</a>
+
+                    <a href="/trainingbits"  class="btn btn-outline-primary"  ><i class="material-icons"></i>Browse Training bits</a>
+
+ 
+                  </div>
+                
+              </div>
+              
+          </div>
+     
+        <!-- Section: Basic Info -->
+
+        <!-- Section: Achievements -->
+        <div class="card card-profile card-plain" style="background-color:#fff">
+            <div class="card-body text-center">
+
+                <h5 class="card-title">Interests</h5>
+
+              <hr class="my-3">
+
+              <button type="button" class="btn btn-light-blue btn-rounded btn-sm px-3" data-toggle="modal"
+                data-target="#modalAchievment"> {{ user.student.interests }}</button>
+              
+            </div>
+            
+        </div>
+        <div class="card card-profile card-plain" style="background-color:#fff">
+            <div class="card-body">
+                <h5 class="card-title ">Support</h5>
+                <p class="card-text">Get fast, free help from our friendly assistants.</p>
+               <a href="/contactus" class="btn btn-primary" >Contact Us</a> 
+              </div>
+            
+        </div>
+    
+     
+
+     
+      </div>
+    </div>
+  </div>
+  <!-- End Tabs with icons on Card -->
+      
+
+
+          <!-- Pagination -->
+          <!-- <nav class="my-4 d-flex justify-content-center">
+
+            <ul class="pagination pagination-circle pg-blue mb-0">
+
+        
+              <li class="page-item disabled clearfix d-none d-md-block"><a class="page-link">First</a></li>
+
+            
+              <li class="page-item disabled">
+                <a class="page-link" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+
+         
+              <li class="page-item active"><a class="page-link">1</a></li>
+              <li class="page-item"><a class="page-link">2</a></li>
+              <li class="page-item"><a class="page-link">3</a></li>
+              <li class="page-item"><a class="page-link">4</a></li>
+              <li class="page-item"><a class="page-link">5</a></li>
+
+     
+              <li class="page-item">
+                <a class="page-link" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+
+         
+              <li class="page-item clearfix d-none d-md-block"><a class="page-link">Last</a></li>
+
+            </ul>
+          </nav> -->
+          <!-- Pagination -->
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </section>
+    <!-- Section: Profile -->
+
+  </div>
+</main>
+<!-- Main layout -->
+
+{% include "landpage/main/js.html" %}  
+
+<div id="ajax_logout"></div>
+    {% endblock content %}

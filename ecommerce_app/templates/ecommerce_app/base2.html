@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}Simple ecommerce </title>
+    <style>
+        table{
+            border-collapse: collapse;
+            border: none;
+        }
+        td{
+            padding: 10px;
+        }
+        form{
+            margin-bottom: 0;
+        }
+   
+    </style>
+         <!-- adsence -->
+         <script data-ad-client="ca-pub-5398818708145454" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+         <!-- adsence -->
+</head>
+<body>
+
+<p>
+    <a href="{% url 'index' %}">All Products</a> |
+    <a href="{% url 'show_cart' %}">: {{ cart_item_count }} Course</a>
+</p>
+
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>

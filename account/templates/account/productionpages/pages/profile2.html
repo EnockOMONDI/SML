@@ -1,0 +1,453 @@
+{% extends 'ecommerce_app/shortcoursedetail/base.html' %}
+
+
+{% load static%}
+{% block content %}
+
+<div id="main-wrapper">
+		
+    <!-- ============================================================== -->
+    <!-- Top header  -->
+    <!-- ============================================================== -->
+    <!-- Start Navigation -->
+
+
+<!-- End Navigation -->
+<div class="clearfix"></div>
+<!-- ============================================================== -->
+<!-- Top header  -->
+<!-- ============================================================== -->		
+
+
+<!-- ============================ Dashboard: Dashboard Start ================================== -->
+<section class="gray pt-0">
+<div class="container-fluid">
+            
+  <div class="row">
+  
+    <div class="col-lg-3 col-md-3 p-0">
+      <div class="dashboard-navbar">
+        
+        <div class="d-user-avater">
+            {% if user.student.profile_pic %}
+          <img src="{{user.student.profile_pic.url}}" class="img-fluid avater" alt="">
+       
+          {% else %}
+          <a href="/update_profile">
+          <img src="../../../static/assets_course_detail/img/uploadpic.png " class="img-fluid avater" alt="">
+          {% endif %}
+        </a>
+          <h4>   {{ user.first_name }} {{ user.last_name }} </h4>
+
+          <span>Dashboard</span>
+        </div>
+        
+        <div class="d-navigation">
+     
+              <!-- <li  ><div  id="google_translate_element"></div>  </li> -->
+              <ul id="side-menu" class="nav">
+               
+               
+             
+                  <li><a  class="nav-link" href="/courses"> <i class="ti-harddrives" ></i> All Courses</a></li>
+                  <!-- <li><a  class="nav-link" href=""><i class="ti-comment-alt"> </i>Discussions</a></li> -->
+        
+            <li><a class="nav-link"   href="{% url 'landpage:platformoverview' %}"><i class="ti-clipboard" ></i> Tutorials</a></li> 
+     
+<!--            
+                
+                <li><a  class="nav-link" href="javascript:void(0);">Pending</a></li>
+                <li><a  class="nav-link" href="javascript:void(0);">Expired</a></li>
+                <li><a  class="nav-link" href="javascript:void(0);">In Draft</a></li> -->
+                      <!-- <li><a   class="nav-link" href="reviews.html"><i class="ti-comment-alt"></i>Reviews</a></li> -->
+
+       
+            <!-- <li><a  class="nav-link"  href="my-order.html"><i class="ti-shopping-cart"></i>My Order</a></li> -->
+            <!-- <li><a  class="nav-link"  href="settings.html"><i class="ti-settings"></i>Settings</a></li> -->
+            <li ><a class="nav-link "  href="{% url 'landpage:contact' %}"> <i class="ti-themify-favicon"></i>Some Help?</a></li>
+
+            <li><a   class="nav-link" href="#"><i class="ti-power-off"></i>Log Out</a></li> <span>           
+          
+                {% include 'publicpages/googletranslate.html' %}  
+                <li>
+                    <div class="nav-link " id="google_translate_element"> </div>
+                   </li>
+            </ul>
+        </div>
+        
+      </div>
+      
+      
+    </div>	
+    
+    <div class="col-lg-9 col-md-9 col-sm-12">
+ 
+      <!-- Row -->
+    
+      <!-- /Row -->
+      
+   
+      <!-- Row -->
+      <div class="row">
+    
+          <div class="col-lg-12 col-md-12 pt-5">
+
+
+
+              <!-- All Info Show in Tab -->
+              <div class="tab_box_info mt-0">
+              
+                  <ul class="nav nav-pills mb-3 light" id="pills-tab" role="tablist">
+               
+                      <li class="nav-item  ">
+                            <a class="nav-link  active " id="profile-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="overview" aria-selected="true">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="message-tab" data-toggle="pill" href="#message" role="tab" aria-controls="message" aria-selected="false">Messages</a>
+                                </li> 
+                    <li  class="nav-item ">
+                    <a class="nav-link" id="enrolled-tab" data-toggle="pill" href="#enrolled" role="tab" aria-controls="enrolled" aria-selected="false">Courses enrolled</a>
+                    </li>
+                    <!-- <li  class="nav-item ">
+                        <a class="nav-link" id="saved-tab" data-toggle="pill" href="#saved" role="tab" aria-controls="saved" aria-selected="false">Saved Courses</a>
+                        </li> -->
+                    <li class="nav-item">
+                    <a class="nav-link" id="transcript-tab" data-toggle="pill" href="#transcript" role="tab" aria-controls="transcript" aria-selected="false">Transcript</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" id="certificate-tab" data-toggle="pill" href="#certificate" role="tab" aria-controls="certificate" aria-selected="false">Certificates</a>
+                    </li>
+                 
+                        <li class="nav-item">
+                            <a class="nav-link" id="reviews-tab" data-toggle="pill" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Settings</a>
+                            </li>
+                    </ul>
+              
+<div class="tab-content" id="pills-tabContent">
+
+<!-- profile -->
+
+
+<div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+{% include "account/productionpages/pages/profileview.html" %}
+</div>
+<!-- end profile -->
+<!-- message-->
+<div class="tab-pane fade  " id="message" role="tabpanel" aria-labelledby="message-tab">
+{% include "account/productionpages/messages/messages.html" %}
+</div>
+    <!-- end message-->
+<!-- enrolled Detail -->
+<div class="tab-pane fade" id="enrolled" role="tabpanel" aria-labelledby="enrolled-tab">
+{% include "account/productionpages/pages/enrollmentview.html" %}
+
+</div>
+<!-- Endenrolled Detail -->
+<!-- transcript Detail -->
+<div class="tab-pane fade" id="transcript" role="tabpanel" aria-labelledby="transcript-tab">
+{% include "account/productionpages/transcript/transcriptview.html" %}
+</div>
+<!-- transcript Detail -->
+
+
+<!-- ecertificate Detail -->
+<div class="tab-pane fade" id="certificate" role="tabpanel" aria-labelledby="certificate-tab">
+{% include "account/productionpages/certificate/view.html" %}
+</div>
+    <!-- certificate Detail -->
+
+
+</div>
+              </div>
+              
+              </div>
+        
+
+      </div>
+      <!-- /Row -->
+      
+      <!-- Row -->
+      <!-- <div class="row justify-content-center">
+            <div class="col-lg-12 col-md-12 mb-3">
+                <div class="sec-heading2">
+                    <div class="sec-left">
+                        <h3>Featured Courses</h3>
+                    </div>
+                    <div class="sec-right">
+                        <ul class="nav nav-tabs side-cates">
+                          <li class="nav-item">
+                            <a class="nav-link active" href="javascript:void(0);">Design</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0);">Development</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0);">Business</a>
+                          </li>
+                          <li class="nav-item" href="javascript:void(0);">
+                            <a class="nav-link" href="javascript:void(0);">Accounting</a>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+         -->
+      
+      <!-- /Row -->
+      
+    </div>
+  
+  </div>
+  
+</div>
+</section>
+<!-- ============================== Start Newsletter ================================== -->
+{% include 'publicpages/newsletter.html' %}
+<!-- ================================= End Newsletter =============================== -->
+
+
+<!-- Log In Modal -->
+{% include 'publicpages/modal.html' %}
+<!-- end modal -->
+{% include "publicpages/footer.html" %}
+
+
+<!-- Log In Modal -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="registermodal" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
+  <div class="modal-content" id="registermodal">
+    <span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
+    <div class="modal-body">
+      <h4 class="modal-header-title">Log In</h4>
+      <div class="login-form">
+        <form>
+        
+          <div class="form-group">
+            <label>User Name</label>
+            <input type="text" class="form-control" placeholder="Username">
+          </div>
+          
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="*******">
+          </div>
+          
+          <div class="form-group">
+            <button type="submit" class="btn btn-md full-width pop-login">Login</button>
+          </div>
+        
+        </form>
+      </div>
+      
+      <div class="social-login mb-3">
+        <ul>
+          <li>
+            <input id="reg" class="checkbox-custom" name="reg" type="checkbox">
+            <label for="reg" class="checkbox-custom-label">Save Password</label>
+          </li>
+          <li><a href="#" class="theme-cl">Forget Password?</a></li>
+        </ul>
+      </div>
+      
+      <div class="text-center">
+        <p class="mt-2">Haven't Any Account? <a href="register.html" class="link">Click here</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- End Modal -->
+
+<!-- Sign Up Modal -->
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="sign-up" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
+  <div class="modal-content" id="sign-up">
+    <span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
+    <div class="modal-body">
+      <h4 class="modal-header-title">Sign Up</h4>
+      <div class="login-form">
+        <form>
+        
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Full Name">
+          </div>
+          
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Email">
+          </div>
+          
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username">
+          </div>
+          
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="*******">
+          </div>
+
+          
+          <div class="form-group">
+            <button type="submit" class="btn btn-md full-width pop-login">Sign Up</button>
+          </div>
+        
+        </form>
+      </div>
+      <div class="text-center">
+        <p class="mt-3"><i class="ti-user mr-1"></i>Already Have An Account? <a href="#" class="link">Go For LogIn</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- End Modal -->
+
+<a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
+
+
+</div>
+
+   
+
+{% include "landpage/main/js.html" %}  
+
+<div id="ajax_logout"></div>
+
+
+<script>
+        /**
+         *  Function will call AJAX function to enroll into a specific course for the
+         *  current logged on user.
+         */
+        function ajax_enroll(course_id)
+        {
+            var url = 'enroll';
+    
+            $.ajax( url, {
+               data: {
+                   'course_id' : course_id,
+                   'csrfmiddlewaretoken': '{{ csrf_token }}',
+               },
+               type: 'post',
+               success: function(result) {
+                   // success code execution here
+                   if (result.status == 'success')
+                   {
+                       window.location = 'course/' + course_id + '/announcements';
+                   }
+               },
+               error: function(xhr,status,error) {
+                   // error code here
+               },
+               complete: function(xhr,status) {
+                   // completion code here
+               }
+            });
+        }
+    </script>
+
+<script>
+    function ajax_refresh_enrollments_table()
+    {
+        $.ajax( 'enrollment_table', {
+            data: {
+               'csrfmiddlewaretoken': '{{ csrf_token }}',
+            },
+            type: 'post',
+               success: function(result) {
+               // success code execution here
+               $('#ajax_table_placeholder').html(result); // Update UI.
+            },
+            error: function(xhr,status,error) {
+               // error code here
+            },
+            complete: function(xhr,status) {
+               // completion code here
+            }
+        });
+    }
+    
+    function ajax_continue_course(course_id)
+    {
+        var url = 'enroll';
+    
+        $.ajax( url, {
+           data: {
+               'course_id' : course_id,
+               'csrfmiddlewaretoken': '{{ csrf_token }}',
+           },
+           type: 'post',
+           success: function(result) {
+               // success code execution here
+               if (result.status == 'success')
+               {
+                    window.location = 'course/' + course_id + '/announcement';
+               }
+           },
+           error: function(xhr,status,error) {
+               // error code here
+           },
+           complete: function(xhr,status) {
+               // completion code here
+           }
+        });
+    }
+    function ajax_disenroll_modal(course_id)
+    {
+        $('#del_' + course_id + '_btn').prop("disabled", true); // Lock button
+        $.ajax( 'disenroll_modal', {
+            data: {
+               'csrfmiddlewaretoken': '{{ csrf_token }}',
+               'course_id': course_id,
+            },
+            type: 'post',
+            success: function(result) {
+               // success code execution here
+               $('#ajax_modal_placeholder').html(result); // Update UI.
+               $('#disenroll_modal').modal();             // Unhide view.
+            },
+            error: function(xhr,status,error) {
+               // error code here
+            },
+            complete: function(xhr,status) {
+               // completion code here
+            }
+        });
+    }
+       $(document).ready(function(){
+        $('#disenroll_modal').on('hidden.bs.modal', function (e) {
+            $('#ajax_modal_placeholder').html('');
+            $('#del_{{ course.id }}_btn').prop("disabled", false); // Unlock button
+        });
+    });
+    
+    /**
+     *  Function will call AJAX function to delete the teacher's course.
+     */
+    function ajax_disenroll_course(course_id)
+    {
+        $('#del_' + course_id + '_btn').prop("disabled", true); // Lock button
+        $.ajax( 'disenroll', {
+            data: {
+               'csrfmiddlewaretoken': '{{ csrf_token }}',
+               'course_id' : course_id
+            },
+            type: 'post',
+            success: function(result) {
+               // success code execution here
+               if (result.status == 'success')
+               {
+                    $('#disenroll_modal').modal('hide');
+                    ajax_refresh_enrollments_table();
+               }
+            },
+            error: function(xhr,status,error) {
+               // error code here
+            },
+            complete: function(xhr,status) {
+               // completion code here
+               $('#del_' + course_id + '_btn').prop("disabled", false); // Unlock button
+            }
+        });
+    }
+</script>
+{% endblock content %}

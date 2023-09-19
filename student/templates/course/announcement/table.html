@@ -1,0 +1,15 @@
+{% load static %} 
+<div id="ajax_announcements_table"
+    name="ajax_announcements_table">
+    {% for announcement in announcements %}
+    <div class="row">
+        <div class="col-lg-10 text-center">
+            <!-- <h2 class="">{{ announcement.title }}</h2> -->
+            {% autoescape off %}
+            {{ announcement.body }}
+            {% endautoescape %}
+            <p style="float: right; margin-right: 100px;"><strong>Created on </strong> <i>{{ announcement.post_date }}</i></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
