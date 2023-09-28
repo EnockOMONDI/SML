@@ -30,6 +30,10 @@ try:
 except ImportError:
     pass
 
+import django
+from django.utils.encoding import force_str
+django.utils.encoding.force_text = force_str
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 db_from_env = dj_database_url.config(conn_max_age=500)
@@ -53,7 +57,7 @@ ALLOWED_HOSTS= ['*']
 #
 
 INSTALLED_APPS = (
-     'landpage',
+    'landpage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -173,8 +177,6 @@ DATABASES['default'].update(db_from_env)
 # }
 
 
-DATABASES['default'].update(db_from_env)
-
 
 
 
@@ -191,6 +193,7 @@ USE_L10N = True
 
 USE_TZ = False
 
+DEFAULT_CHARSET = 'utf-8'
 
 
 # Static files (CSS, JavaScript, Images) & Upload Content
