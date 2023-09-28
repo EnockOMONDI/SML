@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.conf.urls import include, url
+from django.conf.urls import include
 from django.conf.urls.static import static, settings
 from django.contrib.auth import views
 from django.urls import path, re_path

@@ -1,4 +1,4 @@
-from django.conf.urls import  include, url
+from django.urls import re_path, include
 from account.views import mail
 
 from account.views import profile
@@ -10,21 +10,21 @@ from account.views import *
 app_name = "account"
 
 urlpatterns = [
-    url(r'^send_email_message$', mail. email_users),
-    url(r'^profile$', profile.profile_page),
-    url(r'^update_user$', profile.update_user),
-    url(r'^inbox$', mail.mail_page),
-    url(r'^send_private_message$', mail.send_private_message),
-    url(r'^view_private_message$', mail.view_private_message),
-    url(r'^delete_private_message$', mail.delete_private_message),
-    url(r'^settings$', setting.settings_page),
-    url(r'^update_password$', setting.update_password),
-    url(r'^donate$', donate.donate_page),
+    re_path(r'^send_email_message$', mail. email_users),
+    re_path(r'^profile$', profile.profile_page),
+    re_path(r'^update_user$', profile.update_user),
+    re_path(r'^inbox$', mail.mail_page),
+    re_path(r'^send_private_message$', mail.send_private_message),
+    re_path(r'^view_private_message$', mail.view_private_message),
+    re_path(r'^delete_private_message$', mail.delete_private_message),
+    re_path(r'^settings$', setting.settings_page),
+    re_path(r'^update_password$', setting.update_password),
+    re_path(r'^donate$', donate.donate_page),
     #productionurls
-    # url(r'^profileprod$', profileprod.profileprod),
-    url(r'^trainingbits$', profile.trainingbits),
-    url(r'^update_profile$', profile.update_profile),
-    url(r'^view/profile/', profile.view_profile, ),
+    # re_path(r'^profileprod$', profileprod.profileprod),
+    re_path(r'^trainingbits$', profile.trainingbits),
+    re_path(r'^update_profile$', profile.update_profile),
+    re_path(r'^view/profile/', profile.view_profile, ),
 
 
 ]
