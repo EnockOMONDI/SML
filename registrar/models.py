@@ -517,7 +517,7 @@ class EssayQuestion(models.Model):
 
 
 class PeerReview(models.Model):
-    review_id = models.AutoField(max_length=11, primary_key=True)
+    review_id = models.AutoField(primary_key=True)
     MARK_CHOICES = (
         (0, '0 Star'),
         (1, '1 Star'),
