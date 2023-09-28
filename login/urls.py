@@ -1,4 +1,5 @@
-from django.urls import  path, re_path
+
+from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
 app_name="login"
@@ -17,10 +18,10 @@ urlpatterns = [
     path('accounts/password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='login/password_reset_done.html'), name='password_reset_done'),
     path('accounts/reset/<uidb64>/<token>/',  auth_views.PasswordResetConfirmView.as_view(template_name='login/password_reset_confirm.html'), name='password_reset_confirm'),
     path('accounts/reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='login/password_reset_complete.html'), name='password_reset_complete'),
-    path(r'^login_modal$', views.login_modal),
-    path(r'^redirected_login$', views.login_redirect),
-    path(r'^redirectedlogin$', views.trainingbits_redirect),
-    path(r'^login$', views.login_authentication),
-    path(r'^logout$', views.logout_authentication),
+    path('login_modal/', views.login_modal, name='login_modal'),
+    path('redirected_login/', views.login_redirect, name='redirected_login'),
+    path('redirectedlogin/', views.trainingbits_redirect, name='redirectedlogin'),
+    path('login/', views.login_authentication, name='login'),
+    path('logout/', views.logout_authentication, name='logout'),
 
 ]
