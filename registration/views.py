@@ -1,7 +1,8 @@
 import json
 from django.shortcuts import render
 from django.core import serializers
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -12,6 +13,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from registration.form import RegisterForm
 # from .tokens import account_activation_token
+
+
 
 
 
@@ -30,20 +33,26 @@ def redirectedregister(request):
     })
 
 
+
+
+@csrf_exempt  # Only if you want to allow CSRF for this view
 def register(request):
     response_data = {}
-    if request.is_ajax():
-        if request.method == 'POST':
-            form = RegisterForm(request.POST)
-            # Validate the form: the captcha field will automatically
-            # check the input
-            if form.is_valid():
-                response_data = create_user(form)  # Create our store
-            else:
-                response_data = {'status' : 'failed', 'message' : json.dumps(form.errors)}
+    
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        form = RegisterForm(request.POST)
+        
+        # Validate the form: the captcha field will automatically check the input
+        if form.is_valid():
+            response_data = create_user(form)  # Create the user (replace with actual logic)
+            response_data['status'] = 'success'
+        else:
+            response_data = {'status': 'failed', 'message': json.dumps(form.errors)}
     else:
-        response_data = {'status' : 'failure', 'message' : 'Not acceptable request made.' }
-    return HttpResponse(json.dumps(response_data), content_type="application/json")
+        response_data = {'status': 'failure', 'message': 'Not acceptable request made.'}
+
+    return JsonResponse(response_data)
+
 
 
 def create_user(form):
