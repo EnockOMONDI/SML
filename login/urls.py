@@ -21,7 +21,7 @@ urlpatterns = [
     path('login_modal/', views.login_modal, name='login_modal'),
     path('redirected_login/', views.login_redirect, name='redirected_login'),
     path('redirectedlogin/', views.trainingbits_redirect, name='redirectedlogin'),
-    path('login/', views.login_authentication, name='login'),
-    path('logout/', views.logout_authentication, name='logout'),
+    path('login', views.login_authentication, name='login'),
+    path('logout', views.logout_authentication, name='logout'),
 
 ]
