@@ -9,9 +9,9 @@ urlpatterns = [
     re_path('admin/', admin.site.urls),
     # re_path(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
     # re_path(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
-    re_path(r'', include('landpage.urls', namespace='landpage')),
     re_path(r'', include('registration.urls', namespace='registration')),
     re_path(r'', include('login.urls', namespace='login')),
+    re_path(r'', include('landpage.urls', namespace='landpage')),
     re_path(r'', include('account.urls', namespace='account')),
     re_path(r'', include('registrar.urls', namespace='registrar')),
     re_path(r'', include('student.urls', namespace='student')),
