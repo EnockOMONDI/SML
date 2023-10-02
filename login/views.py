@@ -3,7 +3,7 @@ from django.core import serializers
 from django.core.mail import send_mail
 
 import json
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -60,12 +60,22 @@ def login_authentication(request):
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
+
+
+
 def logout_authentication(request):
-    response_data = {'status' : 'success', 'message' : 'you have been succesfully  logged off'}
-    if request.is_ajax():
-        if request.method == 'POST':
-            logout(request)
-    return HttpResponse(json.dumps(response_data), content_type="application/json")
+    response_data = {'status': 'success', 'message': 'You have been successfully logged off'}
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        # Handle logout for AJAX POST request
+        from django.contrib.auth import logout
+        logout(request)
+    else:
+        response_data = {'status': 'error', 'message': 'Invalid request'}
+
+    return JsonResponse(response_data)
+
+
 
 
 def password_reset_request(request):
