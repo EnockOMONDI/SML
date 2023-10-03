@@ -61,8 +61,6 @@ def login_authentication(request):
     return JsonResponse(response_data)
 
 
-
-
 def logout_authentication(request):
     response_data = {'status': 'success', 'message': 'You have been successfully logged off'}
 
