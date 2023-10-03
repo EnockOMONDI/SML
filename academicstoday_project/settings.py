@@ -163,7 +163,6 @@ USE_L10N = True
 
 USE_TZ = False
 
-DEFAULT_CHARSET = 'utf-8'
 
 
 # Static files (CSS, JavaScript, Images) & Upload Content
