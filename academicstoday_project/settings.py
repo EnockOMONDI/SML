@@ -102,6 +102,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'academicstoday_project.urls'
 
 TEMPLATES = [
@@ -202,7 +203,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
     # Add to this list all the locations containing your static files 
