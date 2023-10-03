@@ -136,9 +136,7 @@
                         if (result.status === 'success') {
                             alert('Login successful: ' + result.message);
                             // Redirect or perform other actions after successful login
-                            setTimeout(function() {
-                                window.location.href = '/home_page';  // Adjust the redirect URL as needed
-                            }, 2000); 
+                            window.location.href = '/home_page'; // Adjust the redirect URL as needed 
                         } else {
                             alert('Login failed: ' + result.message);
                         }
