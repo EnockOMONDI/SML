@@ -122,8 +122,7 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'wsgi.application'
-
+WSGI_APPLICATION = 'academicstoday_project.wsgi.application'
 
 
 # Captcha App
@@ -146,7 +145,6 @@ DATABASES = {
     )
 }
 
-DATABASES['default'].update(db_from_env)
 
 
 
