@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from pathlib import Path
 import dj_database_url
 from decouple import config
 import sys
@@ -137,44 +138,15 @@ CAPTCHA_FONT_SIZE = 52
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-     
-    
-#     }
-# }
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": "academicstoday_dbnew",
-#         "USER": "django",
-#         "PASSWORD": "123password",
-#         "HOST": "localhost",
-#         "PORT": " 5432",
-#     }
-# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-     
-    
-    }
+    'default': dj_database_url.config(
+        default='postgres://brainlabske:2IXgxWya6kld@ep-proud-dream-08428657-pooler.us-east-2.aws.neon.tech/LMS'
+    )
 }
+
 DATABASES['default'].update(db_from_env)
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": "dbr01gscv22n03",
-#         "USER": "lbfikazcgtjqxp",
-#         "PASSWORD": "5ef42e10426658516239911c802798825ad3ac8f3d7559c5f3c89ca229d18e34",
-#         "HOST": "ec2-107-22-236-52.compute-1.amazonaws.com",
-#         "PORT": " 5432",
-#     }
-# }
 
 
 
