@@ -35,7 +35,8 @@ import django
 from django.utils.encoding import force_str
 django.utils.encoding.force_text = force_str
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent 
+
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 # Quick-start development settings - unsuitable for production
