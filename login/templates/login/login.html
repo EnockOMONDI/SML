@@ -77,7 +77,7 @@
          
           <div class="modal-footer justify-content-center">
             <button style="background-color:
-            #131b31 ;font-size: 20px;" onclick="ajax_authenticate();"
+            #131b31 ;font-size: 20px;" onclick="ajax_login();"
                         type="button"
                         class="btn btn-common ">Sign in
           </button> 
@@ -113,71 +113,46 @@
 
 
     <script>
-            /**
-             * When the 'Enter' key is pressed, lets try login in.
-             */
-            $(document).bind("keypress.13", function(event) {
-                if ($('#login_modal').is(':visible')) {
-                    if (event.which == 13) {
-                        ajax_authenticate();
-                    }
-                }
-            });
-            
-            //
-            // IMPORTANT:
-            //  The following block of code will run when finished running this modal.
-            //  Please put all jQuery unbinding code here.
-            //
-            // When this model hides, we will clear the contents of it.
-            $('#login_modal').on('hidden.bs.modal', function (e) {
-                $(document).unbind("keypress.key13");
-                $('#login_modal').remove();
-                $('#ajax_response_login').html('');
-            });
-            
-            /**
-             *  Function will call AJAX function to load the register.
-             */
-            function ajax_authenticate()
+             // This assumes you have included jQuery in your HTML.
+
+            function ajax_login() 
             {
-                var url = 'login';
-        
-                $.ajax( url, {
+                var url = '/login';  // Adjust this to match the correct login URL in your Django app
+
+                $.ajax({
+                    url: url,
                     data: {
-                       'username': $("#login_username").val(),
-                       'password': $("#login_password").val(),
-                       'csrfmiddlewaretoken': '{{ csrf_token }}'
+                        'username': $('#login_username').val(),
+                        'password': $('#login_password').val(),
+                        'csrfmiddlewaretoken': '{{ csrf_token }}',
                     },
                     type: 'post',
-                    success: function(json_result) {
-                    // success code execution here
-                       if (json_result.status == "success")
-                       {
-                            // Hide & close the current popup modal.
-                            $('#login_modal').modal('hide');
-                            // alert("success loggedin");
-                            // Load up the course list.
-                            window.location = '/home_page';
-                            
-                          
-                          
-
-                       }
-                       else
-                       {
-                            alert(json_result.message);
-                       }
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
                     },
-                    error: function(xhr,status,error) {
-                       // error code here
+                    success: function (result) {
+                        console.log('Login success:', result);
+                        // Handle success based on the response
+                        if (result.status === 'success') {
+                            alert('Login successful: ' + result.message);
+                            // Redirect or perform other actions after successful login
+                            setTimeout(function() {
+                                window.location.href = '/home_page';  // Adjust the redirect URL as needed
+                            }, 2000); 
+                        } else {
+                            alert('Login failed: ' + result.message);
+                        }
                     },
-                    complete: function(xhr,status) {
-                       // completion code here
+                    error: function (xhr, status, error) {
+                        console.log('Login error:', error);
+                        alert('Login failed. Please try again.');
+                    },
+                    complete: function (xhr, status) {
+                        // Handle completion if needed
                     }
                 });
             }
-        
+
             /**
              *  TODO: Implement.
              */
@@ -209,8 +184,8 @@
 
 
 
-        {% include "ecommerce_app/main/js.html" %}  
-        <div id="ajax_response_login"></div>
+{% include "ecommerce_app/main/js.html" %}  
+          <div id="ajax_response_login"></div>
           <div id="ajax_response_register"></div>
           <div id="ajax_logout"></div>
   {% endblock content %}
